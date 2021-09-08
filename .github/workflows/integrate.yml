@@ -1,0 +1,42 @@
+name: Continous Integration
+
+on: [ push ]
+
+jobs:
+  build_and_test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@latest
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Install Dependencies
+        run: npm ci
+      - name: Linting
+        run: npm run lint
+      - name: Unit Test
+        run: CHROMIUM_BIN=$(which chrome) npm run test:ci
+      # - name: E2E Test
+      #   run: CHROMIUM_BIN=$(which chrome) npm run e2e:ci
+      - name: Build
+        run: npm run build
+      - name: Archive build
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist

@@ -7,6 +7,7 @@
     "build": "ng build --no-progress --base-href /my-app/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "test:ci": "ng test --no-watch --no-progress --browsers ChromeHeadlessCI",
     "e2e": "ng e2e",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
