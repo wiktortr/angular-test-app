@@ -8,9 +8,8 @@ describe('GridPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GridPageComponent ]
-    })
-    .compileComponents();
+      declarations: [GridPageComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

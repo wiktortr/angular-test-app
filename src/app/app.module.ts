@@ -14,15 +14,15 @@ import { ChartPageComponent } from './pages/chart-page/chart-page.component';
     AppComponent,
     HomePageComponent,
     GridPageComponent,
-    ChartPageComponent
+    ChartPageComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AgGridModule.withComponents([]),
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

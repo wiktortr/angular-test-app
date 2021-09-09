@@ -4,27 +4,32 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { Observable } from 'rxjs';
 
 interface RowData {
-  make:string;
-  model:string;
-  price:number;
-};
+  make: string;
+  model: string;
+  price: number;
+}
 
 @Component({
   selector: 'app-grid-page',
   templateUrl: './grid-page.component.html',
-  styleUrls: ['./grid-page.component.scss']
+  styleUrls: ['./grid-page.component.scss'],
 })
 export class GridPageComponent {
-
-  @ViewChild('agGrid') agGrid!:AgGridAngular;
+  @ViewChild('agGrid') agGrid!: AgGridAngular;
 
   columnDefs = [
-    { headerName: 'Make', field: 'make', sortable: true, filter: true, checkboxSelection: true },
+    {
+      headerName: 'Make',
+      field: 'make',
+      sortable: true,
+      filter: true,
+      checkboxSelection: true,
+    },
     { headerName: 'Model', field: 'model', sortable: true, filter: true },
-    { headerName: 'Price', field: 'price', sortable: true, filter: true }
+    { headerName: 'Price', field: 'price', sortable: true, filter: true },
   ];
 
-  rowData:Observable<any>;
+  rowData: Observable<any>;
   text = '';
 
   constructor(private http: HttpClient) {
@@ -32,11 +37,11 @@ export class GridPageComponent {
   }
 
   getSelected() {
-    let selected =this.agGrid.api.getSelectedNodes()
-      .map(e => <RowData>e.data)
-      .map(e => `${e.make} - ${e.model} - ${e.price}`)
+    let selected = this.agGrid.api
+      .getSelectedNodes()
+      .map((e) => <RowData>e.data)
+      .map((e) => `${e.make} - ${e.model} - ${e.price}`)
       .join('\n');
     this.text = `Selected items:\n${selected}`;
   }
-
 }
