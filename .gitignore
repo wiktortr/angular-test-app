@@ -46,3 +46,7 @@ Thumbs.db
 
 # Maven
 target
+
+# Cypress artifacts
+cypress/videos
+cypress/screenshots

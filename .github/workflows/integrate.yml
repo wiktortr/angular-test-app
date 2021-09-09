@@ -29,14 +29,17 @@ jobs:
         run: npm ci
       - name: Linting
         run: npm run lint
-      - name: Unit Test
-        run: CHROMIUM_BIN=$(which chrome) npm run test:ci
-      # - name: E2E Test
-      #   run: CHROMIUM_BIN=$(which chrome) npm run e2e:ci
+      # - name: Unit Test
+      #   run: CHROMIUM_BIN=$(which chrome) npm run test:ci
+      - name: E2E Test
+        run: CHROMIUM_BIN=$(which chrome) npm run e2e:ci
       - name: Build
         run: npm run build
       - name: Archive build
         uses: actions/upload-artifact@v2
         with:
-          name: dist
-          path: dist
+          name: artifacts
+          path: |
+            dist
+            cypress/videos
+            cypress/screenshots
