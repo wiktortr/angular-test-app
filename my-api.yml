@@ -1,0 +1,37 @@
+openapi: 3.0.0
+
+info:
+  version: 1.0.0
+  title: Simple API
+  description: A simple API to illustrate OpenAPI concepts
+
+servers:
+  - url: https://api.wiktortr.pl/v2
+
+components:
+  schemas:
+    Note:
+      type: object
+      properties:
+        owner_id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        createdAt:
+          type: string
+
+paths:
+  /notes:
+    get:
+      description: Return list of notes
+      responses:
+        "200":
+          description: Successfully returned a list of notes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Note"
