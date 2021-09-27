@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
+import { ColDef } from 'ag-grid-community';
 import { Observable } from 'rxjs';
 
 interface RowData {
@@ -29,8 +30,10 @@ export class GridPageComponent {
     { headerName: 'Price', field: 'price', sortable: true, filter: true },
   ];
 
+  test:ColDef[] = []
+
   rowData: Observable<any>;
-  text = '';
+  text:string = '';
 
   constructor(private http: HttpClient) {
     this.rowData = this.http.get('assets/data.json');

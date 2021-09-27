@@ -12,6 +12,9 @@
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
+      "plugins": [
+        "grid"
+      ],
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
@@ -28,7 +31,8 @@
             "prefix": "app",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "grid/require-enzyme-generic": "error"
       }
     },
     {

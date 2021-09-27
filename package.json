@@ -28,6 +28,7 @@
     "@angular/router": "~12.2.0",
     "ag-grid-angular": "^26.0.0",
     "ag-grid-community": "^26.0.0",
+    "eslint-plugin-grid": "file:eslint-plugin-grid",
     "highcharts": "^9.2.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
