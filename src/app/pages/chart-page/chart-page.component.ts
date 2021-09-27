@@ -14,41 +14,39 @@ export class ChartPageComponent implements AfterViewInit {
 
   avalibleFruits = ['Raspberries', 'Blueberries', 'Pears', 'Mango'];
 
+  chartConfig:Highcharts.Options =  {
+    chart: {
+      type: 'bar',
+    },
+    title: {
+      text: 'Fruit Consumption',
+    },
+    xAxis: {
+      categories: ['Apples', 'Bananas', 'Oranges'],
+    },
+    yAxis: {
+      title: {
+        text: 'Fruit eaten',
+      },
+    },
+    series: [
+      {
+        name: 'Jane',
+        data: [1, 0, 4],
+        type: 'bar',
+      },
+      {
+        name: 'John',
+        data: [5, 7, 3],
+        type: 'bar',
+      },
+    ],
+  };
+
   constructor() {}
 
   ngAfterViewInit(): void {
-    this.chart = Highcharts.chart(
-      <Highcharts.HTMLDOMElement>this.container.nativeElement,
-      {
-        chart: {
-          type: 'bar',
-        },
-        title: {
-          text: 'Fruit Consumption',
-        },
-        xAxis: {
-          categories: ['Apples', 'Bananas', 'Oranges'],
-        },
-        yAxis: {
-          title: {
-            text: 'Fruit eaten',
-          },
-        },
-        series: [
-          {
-            name: 'Jane',
-            data: [1, 0, 4],
-            type: 'bar',
-          },
-          {
-            name: 'John',
-            data: [5, 7, 3],
-            type: 'bar',
-          },
-        ],
-      },
-      (e) => console.log(e)
-    );
+    this.chart = Highcharts.chart(<Highcharts.HTMLDOMElement>this.container.nativeElement, this.chartConfig, (e) => console.log(e));
   }
 
   addNewFruit() {

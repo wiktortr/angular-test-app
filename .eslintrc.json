@@ -13,7 +13,7 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "plugins": [
-        "grid"
+        "no-config-data-in-component"
       ],
       "rules": {
         "@angular-eslint/directive-selector": [
@@ -32,7 +32,8 @@
             "style": "kebab-case"
           }
         ],
-        "grid/require-enzyme-generic": "error"
+        "no-config-data-in-component/ag-grid": "error",
+        "no-config-data-in-component/highcharts": "error"
       }
     },
     {
